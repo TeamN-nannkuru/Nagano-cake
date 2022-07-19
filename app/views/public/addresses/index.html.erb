@@ -9,3 +9,12 @@
     <%= f.submit "新規登録" %>
 <% end %>
 
+<p>郵便番号</p>
+<p>住所</p>
+<p>宛名</p>
+<%= @addresses.each do |address| %>
+    <%= address.ordered_postal_code %>
+    <%= address.ordered_address %>
+    <%= address.receriver_name %>
+  
+<% end %>
