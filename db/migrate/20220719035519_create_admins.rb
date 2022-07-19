@@ -7,4 +7,6 @@ class CreateAdmins < ActiveRecord::Migration[6.1]
       t.timestamps
     end
   end
+  def change
+  end
 end
