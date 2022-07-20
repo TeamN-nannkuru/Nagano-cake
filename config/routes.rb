@@ -1,18 +1,16 @@
 Rails.application.routes.draw do
 
 
+  #管理者商品
   namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
-    post 'items/create'
-    patch 'items/update'
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
   end
-  namespace :public do
-    get 'items/index'
-    get 'items/show'
+  
+  #顧客商品
+  namespace :public, :path => '' do
+    resources :items, only: [:index, :show]
   end
+  
   # 管理者用
 # URL /admin/sign_in ...
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
