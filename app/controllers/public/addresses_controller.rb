@@ -8,7 +8,8 @@ class Public::AddressesController < ApplicationController
   
   def create
     @address = Address.new(address_params)
-    @address.customer_id = current_customer.id
+    #ここのコメントを外す！！
+    #@address.customer_id = current_customer.id
   end
 
   def edit
