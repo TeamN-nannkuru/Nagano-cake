@@ -1,30 +1,29 @@
 <h3>商品詳細</h3>
-<% if item.image.attached? %>
-    <%= image_tag item.image, size: "200x200" %>
+<% if @item.image.attached? %>
+    <%= image_tag @item.image, size: "200x200" %>
   <% else %>
     <%= image_tag 'no_image', size: "200x200" %>
   <% end %>
   <label>
     <tr>
       <td>
-        <%= f.label :商品名 %>
+        商品名
         <%= @item.name %>
       </td>
       <td>
-        <%= f.label :商品説明 %>
+        商品説明
         <%= @item.description %>
       </td>
       <td>
-        <%= f.label :ジャンル %>
+        ジャンル
         <%= @item.genre_id %>
       </td>
       <td>
-        <%= f.label :税込価格 %><br>
-        <%= f.label :(税別価格) %>
+        税込価格
         <%= @item.price %>
       </td>
       <td>
-        <%= f.label :販売ステータス %>
+        販売ステータス
         <%= @item.sale_status %>
       </td>
       <td>
