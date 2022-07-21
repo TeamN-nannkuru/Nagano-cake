@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
-<<<<<<< Updated upstream
 
-
-  end
-  
-=======
   namespace :admin do
     get 'orders/show'
   end
@@ -15,7 +10,7 @@ Rails.application.routes.draw do
     get 'orders/index'
     get 'orders/show'
   end
->>>>>>> Stashed changes
+
   # 管理者用
 # URL /admin/sign_in ...
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
