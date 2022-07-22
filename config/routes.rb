@@ -11,7 +11,18 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-
+  
+  namespace :admin do
+    get 'orders/show'
+  end
+  namespace :public do
+    get 'orders/new'
+    get 'orders/infomation'
+    get 'orders/complete'
+    get 'orders/index'
+    get 'orders/show'
+  end
+  
   #管理者商品
   namespace :admin do
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
@@ -24,13 +35,3 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
 
-namespace :admin do
-    get 'orders/show'
-  end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/infomation'
-    get 'orders/complete'
-    get 'orders/index'
-    get 'orders/show'
-  end
