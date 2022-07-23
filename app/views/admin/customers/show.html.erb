@@ -1,0 +1,24 @@
+<h2><%= customers.last_name %><%= customers.first_name %>の会員詳細</h2>
+<h3>会員ID</h3>
+    <%= customers.id %>
+<h3>氏名</h3>
+    <%= customers.last_name %><%= customers.first_name %>
+<h4>フリガナ</h4>
+    <%= customers.last_name_kana %><%= customers.first_name_kana %>
+<h3>郵便番号</h3>
+    <%= postal_code %>
+<h3>住所</h3>
+    <%= address %>
+<h3>電話番号</h3>
+    <%= phone_number %>
+<h3>メールアドレス</h3>
+    <%= email %>
+<h3>会員ステータス</h3>
+    <%= user_status %>
+    
+<%= link_to admin_customers_edit(customer.id) do %>
+    <i class = "btn btn-sm btn-success">編集する</i>
+<% end %>
+<%= link_to admin_customers_edit(customer.id) do %>
+    <i class = "btn btn-sm btn-success">編集する</i>
+<% end %>
