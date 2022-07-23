@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    resources :customers, only: [:show, :edit, :update]
+    get 'customers/quit'
+    patch 'customers/remove'
+  end
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
