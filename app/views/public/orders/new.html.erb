@@ -1,61 +1,8 @@
 <h2>注文情報入力</h2>
 <h3>支払方法</h3>
-    <%= form_with model: @order,url: public_orders_new_path do |f| %>
-<<<<<<< Updated upstream
-        <label><%= f.radio_button :payment_method, "card" %>クレジットカード</label>
-        <label><%= f.radio_button :payment_method, "bank" %>銀行振込</label>
-    <% end %>
-<h3>お届け先</h3>
-    <%= form_with model: @order,url: public_orders_new_path do |f| %>
-        <label>
-            <%= f.radio_button :ordered_address do %>
-        
-            <% end %>
-        </label>
-        <label>
-            <%= f.radio_button :ordered_address do %>
-            
-            <% end %>
-        </label>
-        <label>
-            <%= f.radio_button :ordered_address do %>
-            
-            <% end %>
-        </label>
-    <% end %>
-
-    
-=======
-        <%= form.radio_button :payment_method, :card %>
-            <%= form.label :payment_method, "クレジットカード",{value: :card, style: "display: inline-block;"} %>
-        <%= form.radio_button :payment_method, :bank %>
-            <%= form.label :payment_method, "クレジットカード",{value: :bank, style: "display: inline-block;"} %>
-    <% end %>
-<h3>お届け先</h3>
-    <%= form_with model: @order,url: public_orders_new_path do |f| %>
-        <%= form.radio_button :address, :card %>
-        <%= form.label :address {value: :card, style: "display: inline-block;"} do %>
-            <p>ご自身の住所</p>
-            <%= current_Address %>
-        <% end %>
-        
-        <%= form.radio_button :address, :bank %>
-        <%= form.label :address, "登録済住所から選択",{value: :bank, style: "display: inline-block;"} %>
-            <%= f.select :address, options_from_collection_fot_select(Address.all, :id, :address_display) %>
-        
-        <%= form.radio_button :address, :bank %>
-        <%= form.label :address, "新しいお届け先",{value: :bank, style: "display: inline-block;"} %>
-            <%= form_with model: @address,url: public_addresses_path do |f| %>
-                <h4>郵便番号（ハイフンなし）</h4>
-                <%= f.text_field :ordered_postal_code %>
-                <h4>住所</h4>
-                <%= f.text_field :ordered_address %>
-                <h4>宛名</h4>
-                <%= f.text_field :receriver_name %>
-    
-            <%= link_to public_addresses,method: :post do %>
-                <%= f.submit "確認画面に進む" %>
-            <% end %>
-        <% end %>
-    <% end %>
->>>>>>> Stashed changes
+<%= form_with model: @order,url: public_orders_new_path do |f| %>
+    <%= form.radio_button :payment_method, :card %>
+    <%= form.label :payment_method, "クレジットカード",{value: :card, style: "display: inline-block;"} %>
+    <%= form.radio_button :payment_method, :bank %>
+    <%= form.label :payment_method, "クレジットカード",{value: :bank, style: "display: inline-block;"} %>
+<% end %>
