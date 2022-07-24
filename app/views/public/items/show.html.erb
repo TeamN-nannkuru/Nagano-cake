@@ -1,7 +1,7 @@
 <%= form_with model: @item, url: public_item_path do |f| %>
 <div><%= @item.name %></div>
 <div><%= @item.description %></div>
-<div>¥<%= @item.price %>(税込)</div>
-<div><%= f.select :item_count, [['1', 1], ['2', 2]], include_blank: '個数選択' %></div>
+<div>¥<%= (@item.price*1.1) %>(税込)</div>
+<div><%= f.select :item_count, placeholder: '個数選択', min: 1, max: 20 %></div>
 <div><%= link_to 'カートに入れる', class: 'btn btn-success' %></div>
 <% end %>
