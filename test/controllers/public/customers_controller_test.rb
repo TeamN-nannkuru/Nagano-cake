@@ -11,8 +11,8 @@ class Public::CustomersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get update" do
-    get public_customers_update_url
+  test "should get quit" do
+    get public_customers_quit_url
     assert_response :success
   end
 end
