@@ -4,10 +4,12 @@
     <% @items.each do |item| %>
     <tr class='box' style='margin-right:20px;'>
         <td class='col'>
+            <%= link_to public_item_path(item) do %>
             <% if item.image.attached? %>
             <%= image_tag item.image, size: "200x200" %>
             <% else %>
             <%= image_tag 'no_image', size: "200x200" %>
+            <% end %>
             <% end %>
         </td>
         <td class='col'>
