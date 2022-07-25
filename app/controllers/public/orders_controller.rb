@@ -19,22 +19,6 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
     
     @order.billing_amount = ordered_price(@order)
-    
-    if params[:order][:addresses] == "residence"
-      @order.postcode = current_customer.postcode
-      @order.address = current_customer.address
-      @order.destination = current_customer.last_name + current_customer.first_name
-    elsif params[:order][:addresses] == "registration"
-      delivery = DeliverDestination.find(params[:order][:deliver_destination_id]) 
-      @order.postcode = delivery.postcode
-      @order.address = delivery.address
-      @order.destination = delivery.destination
-    elsif params[:order][:addresses] == "new_address"
-      @order.postcode = params[:order][:postcode]
-      @order.address = params[:order][:address]
-      @order.destination = params[:order][:destination]
-      @delivery = "1"
-    end
   end
 
   def complete
