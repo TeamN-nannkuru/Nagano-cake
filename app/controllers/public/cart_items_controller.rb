@@ -11,7 +11,7 @@ class Public::CartItemsController < ApplicationController
     if @cart_item.save
       redirect_to public_cart_items_path
     else
-      render public_item_path
+      render 'index'
     end
   end
   
