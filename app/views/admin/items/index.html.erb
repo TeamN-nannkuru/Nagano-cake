@@ -1,6 +1,10 @@
 <div class='container'>
 <h2>商品一覧</h2>
-<%= link_to '+', new_admin_item_path, class: 'btn btn-light rounded-circle p-0', style: 'width:2rem;height:2rem;' %>
+<div class='text-right index-new'>
+    <%= link_to new_admin_item_path do %>
+    <button class='btn btn-light btn-circle btn-circle'>+</button>
+    <% end %>
+</div>
 <table class='table table-hover table-inverse'>
     <thead>
         <tr>

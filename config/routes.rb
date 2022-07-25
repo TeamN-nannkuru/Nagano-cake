@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  root 'public/homes#top'
+  get 'admin'=>'admin/homes#top'
+  
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -11,15 +14,22 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-
-  #管理者商品
+  
+  #管理者
   namespace :admin do
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    
+    resources :genres, only: [:index, :create, :edit, :update]
+    
+    get 'orders/show'
   end  
 
-  #顧客商品
+  #顧客
   namespace :public, :path => '' do
+    get '/about'=>'homes#about'
+    
     resources :items, only: [:index, :show]
+<<<<<<< HEAD
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
@@ -28,10 +38,30 @@ Rails.application.routes.draw do
     get 'orders/show'
   end
   namespace :public do
+=======
+    
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    
+>>>>>>> b00e1658cc46d09adb9e87ce17effe6c880a8f94
     get 'orders/new'
     get 'orders/infomation'
     get 'orders/complete'
     get 'orders/index'
     get 'orders/show'
+<<<<<<< HEAD
   end
 end
+=======
+    
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    delete 'cart_items'=>'cart_items#destroy_all', as: 'cart_items/destroy_all'
+    
+    resources :customers, only: [:show, :edit, :update]
+    get 'customers/quit'
+    patch 'customers/remove'
+  end
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+end
+
+
+>>>>>>> b00e1658cc46d09adb9e87ce17effe6c880a8f94
