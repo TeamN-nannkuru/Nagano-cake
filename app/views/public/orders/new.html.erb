@@ -1,0 +1,8 @@
+<h2>注文情報入力</h2>
+<h3>支払方法</h3>
+<%= form_with model: @order,url: public_orders_new_path do |f| %>
+    <%= form.radio_button :payment_method, :card %>
+    <%= form.label :payment_method, "クレジットカード",{value: :card, style: "display: inline-block;"} %>
+    <%= form.radio_button :payment_method, :bank %>
+    <%= form.label :payment_method, "クレジットカード",{value: :bank, style: "display: inline-block;"} %>
+<% end %>

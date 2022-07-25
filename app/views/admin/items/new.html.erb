@@ -1,0 +1,34 @@
+<div class='container'>
+<h3>商品新規登録</h3>
+    <%= form_with model: @item, url: admin_items_path do |f| %>
+        <div class='form-group'>
+            <%= f.label :商品画像, class: 'col-xs-3' %>
+            <%= f.file_field :image, accept: "image/*", class: 'col-xs-8' %>
+        </div>
+        <div class='form-group'>
+            <%= f.label :商品名, class: 'col-xs-3' %>
+            <%= f.text_field :name, class: 'col form-control item_name' %>
+        </div>
+        <div class='form-group'>
+            <%= f.label :商品説明 %>
+            <%= f.text_area :description, class: 'form-control item_description' %>
+        </div>
+        <div class='form-group'>
+            <%= f.label :ジャンル %>
+            <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), include_blank: '--選択してください--' %>
+        </div>
+        <div class='form-group'>
+            <%= f.label :税別価格 %>
+            <%= f.text_field :price, class: 'form-control item-price' %>
+        </div>
+        <div class='form-group'>
+            <%= f.label :販売ステータス %>
+            <%= f.radio_button :sale_status, Item.sale_statuses.key(1) %>
+            <%= f.label :sale_status, Item.sale_statuses_i18n[:now_on_sale] %>
+            <%= f.radio_button :sale_status, Item.sale_statuses.key(0) %>
+            <%= f.label :sale_status, Item.sale_statuses_i18n[:stop_selling] %>
+        </div>
+        <div class='form-group'>
+        <%= f.submit :新規登録, class: 'btn btn-success' %>
+        </div>
+    <% end %>
