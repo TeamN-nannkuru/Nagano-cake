@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
 
+  
+  root 'public/homes#top'
+  get 'admin'=>'admin/homes#top'
+  
+  namespace :public do
+    get '/about'=>'homes#about'
+  end
+  namespace :public do
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    delete 'cart_items'=>'cart_items#destroy_all', as: 'cart_items/destroy_all'
+  end
   namespace :public do
     resources :customers, only: [:show, :edit, :update]
     get 'customers/quit'

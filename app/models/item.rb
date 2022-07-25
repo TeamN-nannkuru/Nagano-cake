@@ -1,5 +1,12 @@
 class Item < ApplicationRecord
     has_one_attached :image
     
-    enum sale_status: { stop_selling: 0, now_on_sale: 1 }
+    has_many :cart_items
+    has_many :order_items
+    belongs_to :genre
+    enum sale_status: { 販売停止中: 0, 販売中: 1 }
+    
+    validates :item_name, presence: true
+    validates :description, presence: true
+    validates :price, presence: true
 end
