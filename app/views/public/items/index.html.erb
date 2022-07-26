@@ -16,7 +16,7 @@
             <%= item.name %>
         </td>
         <td class='col'>
-            ¥<%= (item.price*1.1) %>
+            ¥<%= (item.price*1.1).round.to_i %>
         </td>
     </tr>
     <% end %>

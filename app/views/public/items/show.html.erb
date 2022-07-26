@@ -1,5 +1,5 @@
 <div class='container'>
-<%= form_with model: @cart_item, url: public_cart_items_path(@item) do |f| %>
+<%= form_with model: @cart_item, url: public_cart_items_path do |f| %>
 <div><%= @item.name %></div>
 <div><%= @item.description %></div>
 <div>¥<%= (@item.price*1.1) %>(税込)</div>
