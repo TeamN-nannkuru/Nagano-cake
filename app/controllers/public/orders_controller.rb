@@ -13,6 +13,7 @@ class Public::OrdersController < ApplicationController
         order_item.order_id = @order_id
         order_item.item_count = cart_item.item_count
         order_item.ordered_price = cart_item.billing_amount
+        order_item.save
       end
     end
   end
