@@ -13,10 +13,18 @@ class Public::OrdersController < ApplicationController
         order_item.order_id = @order_id
         order_item.item_count = cart_item.item_count
         order_item.ordered_price = cart_item.billing_amount
-
+      end
+    end
+  end
+  
   def infomation
     @cart_items = current_customer.cart_items
-    @order = Order.new
+    @order = Order.new(order_params)
+    @address = Address.find(params[:order][:address_id])
+    @order.postal_code = current_customer.postal_code
+    @order.address = current_customer.address
+    @order.name = current_customer.name
+    
     
     @order.billing_amount = ordered_price(@order)
   end
@@ -28,5 +36,10 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+  end
+  
+  private
+  def order_params
+    params.require(:order).permit(:payment_method, :postal_code, :address, :name)
   end
 end
