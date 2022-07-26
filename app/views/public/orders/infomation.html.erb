@@ -12,7 +12,24 @@
 <% end %> 
 <p>送料</p>
 <p>800</p>
+<p>商品合計</p>
 <%= @total_price += ((cart_item.item.price*1.1)*cart_item.item_count).round.to_i %>
 <p>請求金額</p>
-<%= @order.total_price %>
+<%= @order.billing_amount %>
 
+<p>支払方法</p>
+<% if :payment_method == :card do %>
+    <p>クレジットカード</p>
+<% else %>
+    <p>銀行振込</p>
+<% end %>
+
+<p>お届け先</p>
+<%= @order.postal_code %>
+<%= @order.address %>
+<%= @order.name %>
+
+<%= f.submit "注文を確定する" do %>
+    <% link_to %>
+    <!-- ここは後で -->
+<% end %>

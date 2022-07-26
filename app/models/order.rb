@@ -4,6 +4,6 @@ class Order < ApplicationRecord
     end
     
     def total_price
-        billing_amount + shipping
+        cart_item.total_price
     end
 end
