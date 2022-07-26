@@ -6,4 +6,8 @@ class Address < ApplicationRecord
   def address_all
       self.postal_code+' '+self.ordered_address+' '+self.receriver_name
   end
+    def address_display
+        '〒' + postal_code + ' ' + address + ' ' + name
+    end
+    
 end
