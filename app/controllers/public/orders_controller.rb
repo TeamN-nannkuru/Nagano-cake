@@ -25,9 +25,11 @@ class Public::OrdersController < ApplicationController
     @order.postal_code = current_customer.postal_code
     @order.address = current_customer.address
     @order.name = current_customer.name
+    @order.billing_amount = total_price + shipping
     
-    
-    @order.billing_amount = ordered_price(@order)
+  end
+  
+  def decision
   end
 
   def complete

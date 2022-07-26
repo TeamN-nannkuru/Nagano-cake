@@ -28,7 +28,10 @@
             <%= f.text_field :ordered_address %>
             <%= form.label :"宛名" %>
             <%= f.text_field :receriver_name %>
-        <%= f.submit "確認画面へ進む" %>
+        <%= f.submit "確認画面へ進む" do %>
+            <% link_to %>
+            <!-- ここは後で -->
+        <% end %>
     <% end %>
         
 
