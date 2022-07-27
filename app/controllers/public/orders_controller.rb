@@ -55,6 +55,10 @@ class Public::OrdersController < ApplicationController
     @order.order_status = order_item.making_status
     @order.item = items.name
     @order.day = created_at
+    @order.item_name = items.name
+    @order.item_price = item.price
+    @order.item_count = cart_items.item_count
+    @order.item_total = item_price * cart_items.item_count
   end
   
   private
