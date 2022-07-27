@@ -39,7 +39,7 @@ Rails.application.routes.draw do
     delete 'cart_items'=>'cart_items#destroy_all', as: 'cart_items/destroy_all'
     
     resources :customers, only: [:show, :edit, :update]
-    get 'customers/quit'
+    get 'customers/:id/quit'=>'customers#quit', as: 'customers/quit'
     patch 'customers/remove'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

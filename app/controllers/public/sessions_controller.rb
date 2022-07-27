@@ -31,8 +31,6 @@ class Public::SessionsController < Devise::SessionsController
     ## 【処理内容3】
     redirect_to new_customer_session_path
     end
-  else
-  end
   end
 
   # If you have extra params to permit, append them to the sanitizer.
