@@ -2,7 +2,7 @@
 <%= form_with model: @cart_item, url: public_cart_items_path do |f| %>
 <div><%= @item.name %></div>
 <div><%= @item.description %></div>
-<div>¥<%= (@item.price*1.1) %>(税込)</div>
+<div>¥<%= (@item.price*1.1).round.to_i %>(税込)</div>
 <div><%= f.select :item_count, [['1個', 1], ['2個', 2], ['3個', 3], ['4個', 4], ['5個', 5], ['6個', 6], ['7個', 7], ['8個', 8], ['9個', 9]], {:prompt => '個数選択'} %></div>
 <div><%= f.submit 'カートに入れる', class: 'btn btn-success' %></div>
 <% end %>
