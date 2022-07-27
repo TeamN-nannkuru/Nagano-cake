@@ -1,6 +1,6 @@
 <div class='container'>
     <h2>会員情報編集</h2>
-    <%= form_with model: @customer, url: public_customers_path do |f| %>
+    <%= form_with model: @customer, url: public_customer_path do |f| %>
     <div class='row user-edit'>
         <div class='col-xs-2'>
             <%= f.label :名前 %>
@@ -61,6 +61,6 @@
             <% end %>
         </div>
         <div class='col-xs-3'>
-            <%= button_to '退会する', public_customers_quit_path, method: :get, class: 'btn btn-danger' %>
+            <%= link_to '退会する', public_customers_quit_path, method: :get, class: 'btn btn-danger' %>
         </div>
     </div>
