@@ -1,0 +1,29 @@
+<h4>注文情報</h4>
+    <p>注文日</p>
+        <%= @order.day %>
+    <p>配送先</p>
+        <%= @order.postal_code %>
+        <%= @order.address %>
+        <%= @order.name %>
+    <p>支払方法</p>
+    <p>ステータス</p>
+        <%= @order.order_status %>
+    
+ <h4>請求情報</h4>
+     <p>商品合計</p>
+         <%= @total_price += ((cart_item.item.price*1.1)*cart_item.item_count).round.to_i %>
+     <p>配送料</p>
+         <p>800</p>
+     <p>ご請求額</p>
+        <%= @order.billing_amount %>
+
+<h4>注文内容</h4>
+    <p>商品</p>
+    <p>単価（税込）</p>
+    <p>個数</p>
+    <p>小計</p>
+    <% @order.each do |order| %>
+        <%= @order.item_name %>
+        <%= @order.item_price %>
+        <%= @order.item_count %>
+        <%= @order.item_total %>

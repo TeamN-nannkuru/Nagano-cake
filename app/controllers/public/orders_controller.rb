@@ -36,9 +36,29 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @order = Order.find(params[:customer_id])
+    @order.postal_code = current_customer.postal_code
+    @order.address = current_customer.address
+    @order.name = current_customer.name
+    @order.billing_amount = total_price + shipping
+    @order.order_status = order_item.making_status
+    @order.item = items.name
+    @order.day = created_at
   end
 
   def show
+    @order = Order.find(params[:customer_id])
+    @order.postal_code = current_customer.postal_code
+    @order.address = current_customer.address
+    @order.name = current_customer.name
+    @order.billing_amount = total_price + shipping
+    @order.order_status = order_item.making_status
+    @order.item = items.name
+    @order.day = created_at
+    @order.item_name = items.name
+    @order.item_price = item.price
+    @order.item_count = cart_items.item_count
+    @order.item_total = item_price * cart_items.item_count
   end
   
   private
