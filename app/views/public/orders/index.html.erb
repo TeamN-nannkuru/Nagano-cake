@@ -6,13 +6,15 @@
 <p>注文詳細</p>
 
 <% @order.each do |order| %>
-    <%= @order.day %>
-    <%= @order.postal_code %>
-    <%= @order.address %>
-    <%= @order.name %>
-    <%= @order.item %>
-    <%= @order.billing_amount %>
-    <%= @order.order_status %>
-    <% link_to %>
+    <%= order.day %>
+    <%= order.postal_code %>
+    <%= order.address %>
+    <%= order.name %>
+    <%= order.item %>
+    <%= order.billing_amount %>
+    <%= order.order_status %>
+    <% link_to public_order_path(order.id) do %>
+    <p>表示する</p>
+    <% end %>
     <!-- ここは後で確認　-->
 <% end %>
