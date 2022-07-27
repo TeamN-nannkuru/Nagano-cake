@@ -1,2 +1,12 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<h4>注文情報</h4>
+<p>注文日</p>
+    <%= @order.day %>
+<p>配送先</p>
+    <%= @order.postal_code %>
+    <%= @order.address %>
+    <%= @order.name %>
+<p>支払方法</p>
+<p>ステータス</p>
+    <%= @order.order_status %>
+    
+
