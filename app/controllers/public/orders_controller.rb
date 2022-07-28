@@ -15,7 +15,7 @@ class Public::OrdersController < ApplicationController
       @order.receriver_name = current_customer.first_name + current_customer.last_name
     elsif params[:order][:select_address] == "1"
       @order = Order.new(order_params)
-      @address = Address.find(params[:id])
+     
       @order.ordered_postal_code = @address.postal_code
       @order.ordered_address = @address.address
       @order.receriver_name = @address.name
@@ -23,7 +23,10 @@ class Public::OrdersController < ApplicationController
       @order.ordered_postal_code = ordered.postal_code
       @order.ordered_address = ordered.address
       @order.receriver_name = ordered.name
-   
+    else
+      
+      flash[:notice] = "errer"
+      render :new
     end
   end
   
