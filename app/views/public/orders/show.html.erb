@@ -22,15 +22,11 @@
             </div>
             <div>
             <h4>注文内容</h4>
-                <p>商品</p>
-                <p>単価（税込）</p>
-                <p>個数</p>
-                <p>小計</p>
                 <% @order_item.each do |order_item| %>
-                    <%= order_item.item.name %>
-                    <%= order_items.price %>
-                    <%= order_items.item.item_count %>
-                    <%= (order_items.price*order_item.item_count) %>
+                    <p>商品<%= order_item.item.name %></p>
+                    <p>単価（税込）<%= order_item.ordered_price %>円</p>
+                    <p>個数<%= order_item.item_count %></p>
+                    <p>小計<%= (order_item.ordered_price*order_item.item_count) %>円</p>
                 <% end %>
             </div>
         </div>

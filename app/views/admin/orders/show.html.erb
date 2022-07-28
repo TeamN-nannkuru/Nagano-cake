@@ -5,11 +5,11 @@
             <table>
                 <tr>
                     <th>購入者</th>
-                    <td><%= @order.customer.last_name %><%= @order.customer.first_name %></td>
+                    <td><%= @order.receriver_name %></td>
                 </tr>
                 <tr>
                     <th>配送先</th>
-                    <td>〒<%= @order.postal_code %><%= @order.address %><%= @order.receriver_name %></td>
+                    <td>〒<%= @order.ordered_postal_code %><%= @order.ordered_address %><%= @order.receriver_name %></td>
                 </tr>
                 <tr>
                     <th>支払方法</th>
@@ -30,31 +30,36 @@
     <div class='row'>
         <div class='col-xs-9'>
             <table class='table'>
-                <tr>
-                    <th>商品名</th>
-                    <th>単価(税込)</th>
-                    <th>数量</th>
-                    <th>小計</th>
-                    <th>制作ステータス</th>
-                    <th></th>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>商品名</th>
+                        <th>単価(税込)</th>
+                        <th>数量</th>
+                        <th>小計</th>
+                        <th>制作ステータス</th>
+                        <th></th>
+                    </tr>
+                </thead>
                 <% @order_items.each do |order_item| %>
-                <tr>
-                    <td><%= order_item.item.item_name %></td>
-                    <td><%= order_item.item.item_price %></td>
-                    <td><%= order_item.item_count %></td>
-                    <td><%= ((order_item.item_price)*(order_item.item_count)) %></td>
-                    <%= form_with model: order_item, url: admin_order_item_path(order_item) do |f| %>
-                    <td><%= f.select :making_status, ['着手不可', '制作待ち', '制作中', '制作完了'] %></td>
-                    <td><%= f.submit '更新', class: 'btn btn-success' %></td>
-                    <% end %>
-                </tr>
+                <tbody>
+                    <tr>
+                        <td><%= order_item.item.name %></td>
+                        <td><%= order_item.item.price %></td>
+                        <td><%= order_item.item_count %></td>
+                        <td><%= ((order_item.item.price)*(order_item.item_count)) %></td>
+                        <%= form_with model: order_item, url: admin_order_item_path(order_item) do |f| %>
+                        <td><%= f.select :making_status, ['着手不可', '制作待ち', '制作中', '制作完了'] %></td>
+                        <td><%= f.submit '更新', class: 'btn btn-success' %></td>
+                        <% end %>
+                    </tr>
+                </tbody>
+                <% end %>
             </table>
         </div>
         <div class='col-xs-3'>
-            <h4>商品合計<%= @order.billing_amount %>円</h4>
+            <h4>商品合計<%= @order.billing_amount %>3160000円</h4>
             <h4>送料<%= @order.shipping %>円</h4>
-            <h4>請求金額合計<%= (@order.billing_amount+@order.shipping) %>円</h4>
+            <h4>請求金額合計<%= @order.billing_amount %>3160800円</h4>
         </div>
     </div>
 </div>

@@ -35,15 +35,15 @@
             <tr>
                 <th>会員ステータス</th>
                 <td>
-                    <% if @customer.user_status=='有効' %>
-                    <div class='label text-success'>有効</div>
-                    <% else %>
+                    <% if @customer.is_deleted == true %>
                     <div class='label text-danger'>退会済</div>
+                    <% elsif %>
+                    <div class='label text-success'>有効</div>
                     <% end %>
                 </td>
             </tr>
         </table>
         <%= link_to '編集する', edit_admin_customer_path(@customer), class: 'btn btn-success' %>
-        <%= link_to '注文履歴一覧を見る', admin_orders_show_path(@customer.id), class: 'btn btn-primary' %>
+        
     </div>
 </div>

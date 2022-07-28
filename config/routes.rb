@@ -21,10 +21,11 @@ Rails.application.routes.draw do
     
     resources :genres, only: [:index, :create, :edit, :update]
     
-    get 'orders/index'
-    get 'orders/show'
+    resources :orders, only: [:index, :show, :update]
     
     resources :customers, only: [:index, :show, :edit, :update]
+    
+    resources :order_items, only: [:update]
   end  
 
   #顧客
