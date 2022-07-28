@@ -1,9 +1,9 @@
 <div class='container'>
 <h3>商品一覧</h3>
 <div class='row'>
-    <% @items.each do |item| %>
-    <tr class='box' style='margin-right:20px;'>
-        <td class='col'>
+    <div class='d-flex flex-wrap'>
+        <% @items.each do |item| %>
+        <div class='box'>
             <%= link_to public_item_path(item) do %>
             <% if item.image.attached? %>
             <%= image_tag item.image, size: "200x200" %>
@@ -11,14 +11,10 @@
             <%= image_tag 'no_image', size: "200x200" %>
             <% end %>
             <% end %>
-        </td>
-        <td class='col'>
-            <%= item.name %>
-        </td>
-        <td class='col'>
-            ¥<%= (item.price*1.1) %>
-        </td>
-    </tr>
+        <p><%= item.name %></p>
+        <p>¥<%= (item.price*1.1).round.to_i %></p>
+        </div>
     <% end %>
+    </div>
     <%= paginate @items %>
 </div>

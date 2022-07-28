@@ -17,24 +17,23 @@
                 <th>小計</th>
                 <th></th>
             </thead>
+            <% sum = 0 %>
             <% @cart_items.each do |cart_item| %>
             <tbody>
                 <td>
-                    <%= link_to public_item_path(cart_item.item_id) do %>
-                    <%= attachment_image_tag cart_item.item, :image, size: "50x50", fallback: 'no_image_jpg' %><%= cart_item.item.item_name %>
+                    <%= image_tag cart_item.item.image, size: "50x50", fallback: 'no_image_jpg' %><%= cart_item.item.name %>
+                </td>
+                <td>
+                    <%= (cart_item.item.price*1.1).round.to_i %>
+                </td>
+                <td>
+                    <%= form_with model: cart_item, url: public_cart_item_path(cart_item) do |f| %>
+                    <%= f.select :item_count, [['1個', 1], ['2個', 2], ['3個', 3], ['4個', 4], ['5個', 5], ['6個', 6], ['7個', 7], ['8個', 8], ['9個', 9]] %><%= f.submit '変更', class: 'btn btn-success' %>
                     <% end %>
                 </td>
                 <td>
-                    <%= (cart_item.item.price*1.1) %>
-                </td>
-                <td>
-                    <%= form_with model: @cart_item, url: public_cart_item_path(cart_item) do |f| %>
-                    <%= f.select :item_count, min:1, max:20 %><%= f.submit '変更', class: 'btn btn-success' %>
-                    <% end %>
-                </td>
-                <td>
-                    <%= ((cart_item.item.price*1.1)*cart_item.item_count) %>
-                    <%= @total_price += ((cart_item.item.price*1.1)*cart_item.item_count) %>
+                    <%= ((cart_item.item.price*1.1)*cart_item.item_count).round.to_i %>
+                    <% @total_price += ((cart_item.item.price*1.1)*cart_item.item_count).round.to_i %>
                 </td>
                 <td>
                     <%= button_to '削除する', public_cart_item_path(cart_item), method: :delete, class: 'btn btn-danger' %>
