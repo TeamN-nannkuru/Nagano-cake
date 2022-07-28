@@ -23,6 +23,8 @@ Rails.application.routes.draw do
     
     get 'orders/index'
     get 'orders/show'
+    
+    resources :customers, only: [:index, :show, :edit, :update]
   end  
 
   #顧客
