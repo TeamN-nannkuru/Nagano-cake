@@ -35,10 +35,10 @@
             <tr>
                 <th>会員ステータス</th>
                 <td>
-                    <% if @customer.is_deleted == true %>
-                    <div class='label text-danger'>退会済</div>
-                    <% elsif %>
+                    <% if @customer.is_deleted == false %>
                     <div class='label text-success'>有効</div>
+                    <% elsif %>
+                    <div class='label text-danger'>退会済</div>
                     <% end %>
                 </td>
             </tr>

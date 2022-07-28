@@ -8,8 +8,8 @@ class Public::AddressesController < ApplicationController
   
   def create
     @address = Address.new(address_params)
-    #ここのコメントを外す！！
-    #@address.customer_id = current_customer.id
+    @address.customer_id = current_customer.id
+    @address.save
   end
 
   def edit
@@ -30,6 +30,6 @@ class Public::AddressesController < ApplicationController
   private
   
   def address_params
-    params.require(:address).permit(:ordered_postal_code, :ordered_address, :receriver_name)
+    params.require(:address).permit(:customer_id, :ordered_postal_code, :ordered_address, :receriver_name)
   end
 end

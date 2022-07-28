@@ -19,7 +19,7 @@
                     <td><%= link_to admin_customer_path(customer) do %><%= customer.last_name %><%= customer.first_name %><% end %></td>
                     <td><%= customer.email %></td>
                     <td>
-                        <% if customer.user_status=='有効' %>
+                        <% if customer.is_deleted==false %>
                         <div class='label text-success'>有効</div>
                         <% else %>
                         <div class='label text-danger'>退会済</div>
