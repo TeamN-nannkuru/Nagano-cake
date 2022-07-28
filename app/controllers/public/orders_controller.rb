@@ -24,9 +24,9 @@ class Public::OrdersController < ApplicationController
       @order.ordered_address = ordered.address
       @order.receriver_name = ordered.name
     else
-      
       flash[:notice] = "errer"
       render :new
+
     end
   end
   
