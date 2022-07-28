@@ -26,11 +26,11 @@
                 <p>単価（税込）</p>
                 <p>個数</p>
                 <p>小計</p>
-                <% @order.each do |order| %>
-                    <%= @order.item_name %>
-                    <%= @order.item_price %>
-                    <%= @order.item_count %>
-                    <%= @order.item_total %>
+                <% @order_items.each do |order_item| %>
+                    <%= order_items.item.item_name %>
+                    <%= order_items.price %>
+                    <%= order_items.item_count %>
+                    <%= (order_items.price*order_item.item_count) %>
                 <% end %>
             </dev>
         </div>
