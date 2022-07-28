@@ -1,7 +1,7 @@
 <div class='container'>
     <div class='row'>
         <div class='col-xs-9'>
-            <dev>
+            <div>
             <h4>注文情報</h4>
                 <p>注文日</p>
                     <%= @order.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
@@ -19,20 +19,20 @@
                 <p>800</p>
                 <p>ご請求額</p>
                     <%= @order.billing_amount %>
-            </dev>
-            <dev>
+            </div>
+            <div>
             <h4>注文内容</h4>
                 <p>商品</p>
                 <p>単価（税込）</p>
                 <p>個数</p>
                 <p>小計</p>
-                <% @order_items.each do |order_item| %>
+                <% @order_item.each do |order_item| %>
                     <%= order_items.item.item_name %>
                     <%= order_items.price %>
                     <%= order_items.item_count %>
                     <%= (order_items.price*order_item.item_count) %>
                 <% end %>
-            </dev>
+            </div>
         </div>
     </div>
 </div>
