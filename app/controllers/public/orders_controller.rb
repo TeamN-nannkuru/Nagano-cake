@@ -7,7 +7,7 @@ class Public::OrdersController < ApplicationController
     #情報確認画面
     @cart_items = current_customer.cart_items
     @order = Order.new(order_params)
-    @address = Address.find(params[:order][:address_id])
+    @address = Address.find(params[:id])
     @order.billing_amount = total_price + shipping
     if params[:select_address] == 0
       @order = Order.new(order_params)
@@ -16,7 +16,7 @@ class Public::OrdersController < ApplicationController
       @order.name = current_customer.first_name + current_customer.last_name
     elsif params[:select_address] == 1
       @order = Order.new(order_params)
-      @address = Address.find(params[:order][:address_id])
+      @address = Address.find(params[:id])
       @order.postal_code = @address.postal_code
       @order.address = @address.address
       @order.name = @address.name

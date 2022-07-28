@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     
     resources :orders, only: [:new, :show, :index, :create]
-    get 'orders/:id/infomation'=>'orders#infomation', as: 'orders/infomation'
+    post 'orders/infomation'=>'orders#infomation'
     
     resources :cart_items, only: [:index, :create, :update, :destroy]
     delete 'cart_items'=>'cart_items#destroy_all', as: 'cart_items/destroy_all'

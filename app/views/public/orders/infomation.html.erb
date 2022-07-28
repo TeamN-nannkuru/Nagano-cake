@@ -31,7 +31,7 @@
                 <%= @order.name %>
             </div>
             <div>
-                <!-- 情報 ==>
+                <!-- 情報 -->
             <%= form_with model: @order,url: public_orders_decision_path{value: :postal_code, :address, :name, :payment_method} do |f| %>
                 <%= f.submit "注文を確定する" %>
             <% end %>
