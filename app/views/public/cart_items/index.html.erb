@@ -33,7 +33,7 @@
                 </td>
                 <td>
                     <%= ((cart_item.item.price*1.1)*cart_item.item_count).round.to_i %>
-                    <%= sum += ((cart_item.item.price*1.1)*cart_item.item_count).round.to_i %>
+                    <% @total_price += ((cart_item.item.price*1.1)*cart_item.item_count).round.to_i %>
                 </td>
                 <td>
                     <%= button_to '削除する', public_cart_item_path(cart_item), method: :delete, class: 'btn btn-danger' %>
