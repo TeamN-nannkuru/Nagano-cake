@@ -20,12 +20,16 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = @address.postal_code
       @order.address = @address.address
       @order.name = @address.name
+    elsif params[:select_address] == 2
+      @order.postal_code = ordered.postal_code
+      @order.address = ordered.address
+      @order.name = ordered.name
     else
       render new
     end
   end
   
-  def decision
+  def create
     #確定処理
     @order =current_customer.orders.new(order_params)
     if @order.save
@@ -33,7 +37,7 @@ class Public::OrdersController < ApplicationController
       cart_item.destroy_all
       redirect_to complete_path
     else
-      render new
+      render :new
     end
   end
 
@@ -41,11 +45,11 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @order = Order.find(params[:customers_id])
+    @order = Order.find(params[:id])
   end
 
   def show
-    @order = Order.find(params[:customers_id])
+    @order = Order.find(params[:id])
   end
   
   private
