@@ -1,6 +1,6 @@
 <h2>注文情報入力</h2>
 <h3>支払方法</h3>
-    <%= form_with model: @order,url: public_orders_infomation_path do |f| %>
+    <%= form_with model: @order, url: public_orders_infomation_path do |f| %>
         <%= f.radio_button :payment_method, :card %>
         <%= f.label :payment_method, "クレジットカード",{value: :card, style: "display: inline-block;"} %>
         <%= f.radio_button :payment_method, :bank %>
@@ -15,7 +15,7 @@
         <%= f.radio_button :select_address, 1 %>
         <%= f.label :ordered_address, {value: :address, style: "display: inline-block;"} do %>
             <h4>登録済住所</h4>
-            <%= form.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+            <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
         <% end %>
         <%= f.radio_button :select_address, 2 %>
         <%= f.label :ordered_address ,{value: :address, style: "display: inline-block;"} do %>
