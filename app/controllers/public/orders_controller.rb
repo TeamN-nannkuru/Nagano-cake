@@ -30,14 +30,19 @@ class Public::OrdersController < ApplicationController
   
   def create
     #確定処理
-    @order =current_customer.orders.new(order_params)
-    if @order.save
-      order_item.save
-      cart_item.destroy_all
-      redirect_to complete_path
-    else
-      render :new
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    @order.save!
+    current_customer.cart_items.each do |cart_item|
+      @order_item = OrderItem.new
+      @order_item.item_id = cart_item.item_id
+      @order_item.item_count = cart_item.item_count
+      @order_item.ordered_price = (cart_item.item.price*1.1).round.to_i
+      @order_item.order_id = @order.id
+      @order_item.save
     end
+    current_customer.cart_items.destroy_all
+    redirect_to public_orders_complete_path
   end
 
   def complete

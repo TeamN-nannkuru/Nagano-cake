@@ -4,17 +4,17 @@
             <dev>
             <h4>注文情報</h4>
                 <p>注文日</p>
-                    <%= @order.day %>
+                    <%= @order.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
                 <p>配送先</p>
-                    <%= @order.postal_code %>
-                    <%= @order.address %>
-                    <%= @order.name %>
+                    <%= @order.ordered_postal_code %>
+                    <%= @order.ordered_address %>
+                    <%= @order.receriver_name %>
                 <p>支払方法</p>
                 <p>ステータス</p>
                     <%= @order.order_status %>
             <h4>請求情報</h4>
                 <p>商品合計</p>
-                    <%= @total_price += ((cart_item.item.price*1.1)*cart_item.item_count).round.to_i %>
+                    <%= @total_price %>
                 <p>配送料</p>
                 <p>800</p>
                 <p>ご請求額</p>
