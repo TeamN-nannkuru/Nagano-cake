@@ -26,7 +26,7 @@
             </div>
             <div>
                 <!-- 情報 -->
-            <%= form_with model: @order, url: public_orders_path, method: :post do |f| %>
+            <%= form_with model: @order, url: public_orders_path do |f| %>
             <%= f.hidden_field :ordered_postal_code, value: @order.ordered_postal_code %>
             <%= f.hidden_field :ordered_address, value: @order.ordered_address %>
             <%= f.hidden_field :receriver_name, value: @order.receriver_name %>
