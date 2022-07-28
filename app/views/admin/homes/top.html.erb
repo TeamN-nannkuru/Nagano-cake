@@ -1,6 +1,7 @@
 <div class='container'>
     <div class='row'>
         <h4>注文履歴一覧</h4>
+    </div>
         <div class='row'>
         <table class='table'>
             <thead>
@@ -14,15 +15,14 @@
             <% @orders.each do |order| %>
             <tbody>
                 <tr>
-                    <td><%= link_to @order.created_at.strftime('%Y-%m-%d %H:%M:%S'), admin_order_path(@order) %></td>
-                    <td><%= @order.receriver_name %></td>
-                    <td><%= @order.cart_items.item_count %></td>
-                    <td><%= @order.order_status %></td>
+                    <td><%= link_to order.created_at.strftime('%Y-%m-%d %H:%M:%S'), admin_order_path %></td>
+                    <td><%= order.receriver_name %></td>
+                    <td><%= order.id %></td>
+                    <td><%= order.order_status %></td>
                 </tr>
             </tbody>
             <% end %>
-        </tabel>
+        </table>
         <%= paginate @orders %>
-        </div>
     </div>
 </div>
