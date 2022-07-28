@@ -45,15 +45,17 @@ class Public::OrdersController < ApplicationController
     redirect_to public_orders_complete_path
   end
 
-  def complete
-  end
+  
 
   def index
     @order = Order.find(params[:id])
   end
 
   def show
-    @order = Order.find(params[:id])
+    @order = current_customer.order.find(params[:id])
+  end
+  
+  def complete
   end
   
   private
