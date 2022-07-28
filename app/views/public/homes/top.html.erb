@@ -2,7 +2,7 @@
     <div class='row'>
         <div class='col-xs-9'>
             <div class='bg-top'>
-                <p class='font-text'>
+                <p class='font-text' style='margin:20px;'>
                     ようこそ、ながのCAKEへ！<br>
                     このサイトは、ケーキ販売のECサイトになります。<br>
                     会員でない方も商品の閲覧はできますが、<br>
@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class='row'>
-        <h4>新着商品</h4>
+        <h4 style='margin:20px;'>新着商品</h4>
         <% @items.each do |item| %>
         <div class='new-items'>
         <%= link_to public_item_path(item.id) do %>
@@ -22,8 +22,8 @@
             <%= image_tag 'no_image', size: "200x200" %>
             <% end %>
         <% end %>
-        <p><%= item.item_name %></p>
-        <p>¥<%= (item.price*1.1) %></p>
+        <p><%= item.name %></p>
+        <p>¥<%= (item.price*1.1).round.to_i %></p>
         </div>
         <% end %>
     </div>

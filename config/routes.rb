@@ -23,6 +23,8 @@ Rails.application.routes.draw do
     
     get 'orders/index'
     get 'orders/show'
+    
+    resources :customers, only: [:index, :show, :edit, :update]
   end  
 
   #顧客
@@ -33,13 +35,14 @@ Rails.application.routes.draw do
     
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     
-    resources :orders
+    resources :orders, only: [:new, :show, :index, :create]
+    get 'orders/:id/infomation'=>'orders#infomation', as: 'orders/infomation'
     
     resources :cart_items, only: [:index, :create, :update, :destroy]
     delete 'cart_items'=>'cart_items#destroy_all', as: 'cart_items/destroy_all'
     
     resources :customers, only: [:show, :edit, :update]
-    get 'customers/quit'
+    get 'customers/:id/quit'=>'customers#quit', as: 'customers/quit'
     patch 'customers/remove'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
