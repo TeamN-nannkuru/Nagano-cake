@@ -1,5 +1,5 @@
 class Address < ApplicationRecord
-    belongs_to customer
+    belongs_to :customer
     
     validates :postal_code, :receriver_name, :ordered_address, presence: true
     
