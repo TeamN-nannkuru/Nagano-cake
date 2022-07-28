@@ -27,9 +27,9 @@
                 <p>個数</p>
                 <p>小計</p>
                 <% @order_item.each do |order_item| %>
-                    <%= order_items.item.item_name %>
+                    <%= order_item.item.name %>
                     <%= order_items.price %>
-                    <%= order_items.item_count %>
+                    <%= order_items.item.item_count %>
                     <%= (order_items.price*order_item.item_count) %>
                 <% end %>
             </div>
