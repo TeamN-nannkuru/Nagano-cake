@@ -1,35 +1,55 @@
-<h2>注文情報入力</h2>
-<h3>支払方法</h3>
-    <%= form_with model: @order, url: public_orders_infomation_path do |f| %>
-        <%= f.radio_button :payment_method, :card %>
-        <%= f.label :payment_method, "クレジットカード",{value: :card, style: "display: inline-block;"} %>
-        <%= f.radio_button :payment_method, :bank %>
-        <%= f.label :payment_method, "銀行振込",{value: :bank, style: "display: inline-block;"} %>
-<h3>お届け先</h3>
-        <%= f.radio_button :select_address, 0 %>
-        <%= f.label :ordered_address, {value: :address, style: "display: inline-block;"} do %>
-            <h4>ご自身の住所</h4>
-            <%= "#{current_customer.postal_code}""#{current_customer.address}" %>
-            <%= "#{current_customer.first_name}""#{current_customer.last_name}" %>
-        <% end %>
-        <%= f.radio_button :select_address, 1 %>
-        <%= f.label :ordered_address, {value: :address, style: "display: inline-block;"} do %>
-            <h4>登録済住所</h4>
-            <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
-        <% end %>
-        <%= f.radio_button :select_address, 2 %>
-        <%= f.label :ordered_address ,{value: :address, style: "display: inline-block;"} do %>
-            <h4>新しいお届け先</h4>
-            <%= f.label :"郵便番号（ハイフンなし）" %>
-            <%= f.text_field :ordered_postal_code %>
-            <%= f.label :"住所" %>
-            <%= f.text_field :ordered_address %>
-            <%= f.label :"宛名" %>
-            <%= f.text_field :receriver_name %>
-        <%= f.submit "確認画面へ進む" do %>
-        <% end %>
-    <% end %>
-        
 
+<div class='container'>
+    <div class='row'>
+        <div class='col-xs-9'>
+            <div>
+            <h2>注文情報入力</h2>
+                <h3>支払方法</h3>
+                    <%= form_with model: @order,url: public_orders_decision_path, method: :post do |f| %>
+                        <%= f.radio_button :payment_method, :card %>
+                            <%= f.label :payment_method, "クレジットカード",{value: :card, style: "display: inline-block;"} %>
+                        <%= f.radio_button :payment_method, :bank %>
+                            <%= f.label :payment_method, "銀行振込",{value: :bank, style: "display: inline-block;"} %>
+                            </div>
+                            <div>
+                <h3>お届け先</h3>
+                <div class='row'>
+                    <div class='col-xs-9'>
+                            <%= f.radio_button :select_address, 0 %>
+                                <%= f.label :ordered_address, {value: :address, style: "display: inline-block;"} do %>
+                                    <h4>ご自身の住所</h4>
+                                        <%= "#{current_customer.postal_code}""#{current_customer.address}" %>
+                                    <%= "#{current_customer.last_name}""#{current_customer.first_name}" %>
+                                <% end %>
+                            <%= f.radio_button :select_address, 1 %>
+                                <%= f.label :ordered_address, {value: :address, style: "display: inline-block;"} do %>
+                                </div>
+                                </div>
+                                <div class='row'>
+                                    <div class='col-xs-9'>
+                                    <h4>登録済住所</h4>
+                                        <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+                                <% end %>
+                            <%= f.radio_button :select_address, 2 %>
+                                <%= f.label :ordered_address ,{value: :address, style: "display: inline-block;"} do %>
+                                </div>
+                                </div>
+                                <div class='row'>
+                                    <div class='col-xs-9'>
+                <h4>新しいお届け先</h4>
+                    <%= f.label :"郵便番号（ハイフンなし）" %>
+                        <%= f.text_field :ordered_postal_code %>
+                    <%= f.label :"住所" %>
+                        <%= f.text_field :ordered_address %>
+                    <%= f.label :"宛名" %>
+                        <%= f.text_field :receriver_name %>
+                        </div>
+                        </div>
+                    <%= f.submit "確認画面へ進む" %>
+                <% end %>
+            <% end %>
+            </div>
+        </div>
+    </div>
+</div>
 
-<% end %>

@@ -1,5 +1,7 @@
 class Order < ApplicationRecord
+
     belongs_to :order_item
+
     
     def shipping
         800
