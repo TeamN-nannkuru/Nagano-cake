@@ -5,7 +5,7 @@
             <div>
             <h2>注文情報入力</h2>
                 <h3>支払方法</h3>
-                    <%= form_with model: @order,url: public_orders_decision_path, method: :post do |f| %>
+                    <%= form_with model: @order,url: public_orders_infomation do |f| %>
                         <%= f.radio_button :payment_method, :card %>
                             <%= f.label :payment_method, "クレジットカード",{value: :card, style: "display: inline-block;"} %>
                         <%= f.radio_button :payment_method, :bank %>
