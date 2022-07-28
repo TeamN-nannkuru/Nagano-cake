@@ -20,11 +20,13 @@
                 <p>請求金額</p>
             <%= @order.billing_amount %>
             <p>支払方法</p>
+
         <% if :payment_method == card %>
             <p>クレジットカード</p>
         <% elsif :payment_method == bank %>
             <p>銀行振込</p>
         <% end %>
+
             <p>お届け先</p>
                 <%= @order.postal_code %>
                 <%= @order.address %>
@@ -33,7 +35,7 @@
             <div>
                 <!-- 情報 -->
             <%= form_with model: @order, url: public_orders_path, method: :post do |f| %>
-            <%= f.hidden_field model: @order, value: {value: :postal_code, :address, :name, :payment_method} %>
+            <%= f.hidden_field model: @order, value: {value: :postal_code, :address, :name, :payment_method}
                 <%= f.submit "注文を確定する" %>
             <% end %>
             </div>

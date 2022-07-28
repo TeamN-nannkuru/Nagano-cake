@@ -7,14 +7,16 @@ class Public::OrdersController < ApplicationController
     #情報確認画面
     @cart_items = current_customer.cart_items
     @order = Order.new(order_params)
+
     #@order.billing_amount = ordered_price + shipping
     if params[:order][:select_address] == "0"
       @order = Order.new(order_params)
+
       @order.ordered_postal_code = current_customer.postal_code
       @order.ordered_address = current_customer.address
       @order.receriver_name = current_customer.first_name + current_customer.last_name
     elsif params[:order][:select_address] == "1"
-      @order = Order.new(order_params)
+      @order = Order.new(order_params
       @address = Address.find(params[:id])
       @order.ordered_postal_code = @address.postal_code
       @order.ordered_address = @address.address
@@ -22,8 +24,11 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:select_address] == "2"
       @order.ordered_postal_code = ordered.postal_code
       @order.ordered_address = ordered.address
-      @order.receriver_name = ordered.name
-   
+      @order.receriver_name = ordered.nam
+    else
+      flash[:notice] = "errer"
+      render :new
+
     end
   end
   
