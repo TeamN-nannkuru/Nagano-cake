@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+    
     def shipping
         800
     end
